@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
         tessBaseAPI = new TessBaseAPI();
         String dir = getFilesDir() + "/tesseract";
         if(checkLanguageFile(dir+"/tessdata"))
-            tessBaseAPI.init(dir, "eng");
+            tessBaseAPI.init(dir, "kor");
     }
 
     boolean checkLanguageFile(String dir)
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
         if(!file.exists() && file.mkdirs())
             createFiles(dir);
         else if(file.exists()){
-            String filePath = dir + "/eng.traineddata";
+            String filePath = dir + "/kor.traineddata";
             File langDataFile = new File(filePath);
             if(!langDataFile.exists())
                 createFiles(dir);
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity{
         OutputStream outputStream = null;
 
         try {
-            inputStream = assetMgr.open("eng.traineddata");
+            inputStream = assetMgr.open("kor.traineddata");
 
-            String destFile = dir + "/eng.traineddata";
+            String destFile = dir + "/kor.traineddata";
 
             outputStream = new FileOutputStream(destFile);
 
